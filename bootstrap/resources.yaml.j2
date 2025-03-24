@@ -25,12 +25,12 @@ stringData:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: devbu-io-tls
+  name: joshporter-me-tls
   namespace: kube-system
   annotations:
-    cert-manager.io/alt-names: '*.devbu.io,devbu.io'
-    cert-manager.io/certificate-name: devbu-io
-    cert-manager.io/common-name: devbu.io
+    cert-manager.io/alt-names: '*.joshporter.me,joshporter.me'
+    cert-manager.io/certificate-name: joshporter-me
+    cert-manager.io/common-name: joshporter.me
     cert-manager.io/ip-sans: ""
     cert-manager.io/issuer-group: ""
     cert-manager.io/issuer-kind: ClusterIssuer
@@ -40,8 +40,8 @@ metadata:
     controller.cert-manager.io/fao: "true"
 type: kubernetes.io/tls
 data:
-  tls.crt: op://kubernetes/devbu-io-tls/tls.crt
-  tls.key: op://kubernetes/devbu-io-tls/tls.key
+  tls.crt: op://kubernetes/joshporter-me-tls/tls.crt
+  tls.key: op://kubernetes/joshporter-me-tls/tls.key
 ---
 apiVersion: v1
 kind: Secret

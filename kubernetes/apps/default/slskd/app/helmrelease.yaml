@@ -74,7 +74,7 @@ spec:
         controller: slskd
         type: LoadBalancer
         annotations:
-          lbipam.cilium.io/ips: 192.168.42.127, ::ffff:192.168.42.127
+          lbipam.cilium.io/ips: 10.0.3.127, ::ffff:10.0.3.127
         ports:
           http:
             primary: true
@@ -85,7 +85,7 @@ spec:
             protocol: TCP
     route:
       app:
-        hostnames: ["{{ .Release.Name }}.devbu.io"]
+        hostnames: ["{{ .Release.Name }}.joshporter.me"]
         parentRefs:
           - name: internal
             namespace: kube-system

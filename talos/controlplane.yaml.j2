@@ -7,7 +7,7 @@ machine:
   ca:
     crt: op://kubernetes/talos/MACHINE_CA_CRT
     key: op://kubernetes/talos/MACHINE_CA_KEY
-  certSANs: ["127.0.0.1", "192.168.42.120"]
+  certSANs: ["127.0.0.1", "10.0.3.4"]
   kubelet:
     image: ghcr.io/siderolabs/kubelet:{{ ENV.KUBERNETES_VERSION }}
     extraConfig:
@@ -19,7 +19,7 @@ machine:
         options: ["bind", "rshared", "rw"]
     defaultRuntimeSeccompProfileEnabled: true
     nodeIP:
-      validSubnets: ["192.168.42.0/24"]
+      validSubnets: ["10.0.3.0/24"]
     disableManifestsDirectory: true
   network:
     interfaces:
@@ -29,7 +29,7 @@ machine:
         mtu: 9000
         dhcp: true
         vip:
-          ip: 192.168.42.120
+          ip: 10.0.3.4
   install:
     diskSelector:
       model: Samsung SSD 870
@@ -112,7 +112,7 @@ cluster:
   id: op://kubernetes/talos/CLUSTER_ID
   secret: op://kubernetes/talos/CLUSTER_SECRET
   controlPlane:
-    endpoint: https://192.168.42.120:6443
+    endpoint: https://10.0.3.4:6443
   clusterName: main
   network:
     cni:
@@ -138,7 +138,7 @@ cluster:
       enable-aggregator-routing: true
       feature-gates: MutatingAdmissionPolicy=true
       runtime-config: admissionregistration.k8s.io/v1alpha1=true
-    certSANs: ["127.0.0.1", "192.168.42.120"]
+    certSANs: ["127.0.0.1", "10.0.3.4"]
     disablePodSecurityPolicy: true
     auditPolicy:
       apiVersion: audit.k8s.io/v1
@@ -179,5 +179,5 @@ cluster:
       key: op://kubernetes/talos/CLUSTER_ETCD_CA_KEY
     extraArgs:
       listen-metrics-urls: http://0.0.0.0:2381
-    advertisedSubnets: ["192.168.42.0/24"]
+    advertisedSubnets: ["10.0.3.0/24"]
   allowSchedulingOnControlPlanes: true
