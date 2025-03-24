@@ -1,0 +1,9 @@
+machine:
+  network:
+    hostname: k8s-0
+  disks:
+    - device: /dev/sda
+      partitions:
+        - mountpoint: /var/mnt/extra
+  install:
+    image: factory.talos.dev/installer/7954d28ec813d64d2ccc33b09c5d981954e5c023e724d4395ea81e9b44ce4965:{{ ENV.TALOS_VERSION }}
